@@ -1,9 +1,2 @@
-/.vs
-/bin
-/obj
-/
-
-*.docx
-*.pdf
-*.rar
-*.zip
+*
+!*.cs
