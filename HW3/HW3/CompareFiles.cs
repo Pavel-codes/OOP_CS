@@ -12,10 +12,12 @@ namespace HW3
         {
             return first.getFileName().Equals(second.getFileName()) && first.getData().Equals(second.getData());
         }
+
         public static int CompareSizeFiles(DataFile first, DataFile second)
         {
             if(first.GetSize() == second.GetSize()) { return 0; }
             return first.GetSize()>second.GetSize()?1:-1;
         }
+
     }
 }

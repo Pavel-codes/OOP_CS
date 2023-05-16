@@ -22,20 +22,25 @@ namespace HW3
             this.type = type;
             FileCount++;
         }
+
         public DataFile() : this("someFile" + (FileCount+1), "", FileTypeExtension.TXT ) { }
+
         public DataFile(DataFile other)
         {
             FileName = "copy of " + other.FileName;
             LastUpdateTime = DateTime.Now;
         }
+
         public int getFileCount()
         {
             return FileCount;
         }
+
         public void IncreaseFileCount()
         {
             FileCount++;
         }
+
         public string getFileName()
         {
             return FileName;
@@ -55,22 +60,27 @@ namespace HW3
             }
             this.FileName = FileName;
         }
+
         public string getData()
         {
             return this.Data;
         }
+
         public void setData(string Data)
         {
             this.Data = Data;
         }
+
         public void SetTime()
         {
             LastUpdateTime = DateTime.Now;
         }
+
         public DateTime GetTime()
         {
             return LastUpdateTime;
         }
+
         public float GetSize()
         {
             float size = 0;
@@ -81,9 +91,11 @@ namespace HW3
             }
             return size;
         }
+
         public void Dir()
         {
             Console.WriteLine($"{LastUpdateTime} {GetSize()}KB {FileName}.{type}");
         }
+
     }
 } 
