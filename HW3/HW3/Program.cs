@@ -20,7 +20,6 @@ namespace HW3
         {
             DataFile d1 = new DataFile();
             DataFile test = new DataFile();
-            Console.WriteLine(d1.getFileCount());
             DataFile d2 = new DataFile("myFile", "How much data do i need to write to get a significant number of characters for the function to show at least 0.1KB", FileTypeExtension.TXT);
             DataFile d3 = new DataFile();
             DataFile d4 = new DataFile();
@@ -31,12 +30,13 @@ namespace HW3
             q1.Enqueue(d2);
             q1.Enqueue(d3);
             q1.Enqueue(d4);
+            //q1.Dequeue();
             //test = q1.Dequeue();
 
 
-            //q1.PrintQueue(q2); // null ref
+            q1.PrintQueue();
 
-            d4 = q1.BigFile(); // stopped working
+            d4 = q1.BigFile();
 
         }
     }

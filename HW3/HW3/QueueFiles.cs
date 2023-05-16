@@ -85,15 +85,15 @@ namespace HW3
         public DataFile Dequeue() // returns the first file but removes the last
         {
             DataFile[] temp = new DataFile[dataFiles.Length - 1];
-            DataFile newFile = dataFiles[freeIndex-1];
+            DataFile newFile = dataFiles[0];
             for (int i = 0; i < freeIndex - 1; i++)
             {
                 temp[i] = dataFiles[i + 1];
             }
             freeIndex--;
-            dataFiles[freeIndex] = null;
-            Array.Resize(ref dataFiles, dataFiles.Length - 1);
-            dataFiles.CopyTo(temp, 0);
+            //dataFiles[freeIndex] = null;
+            Array.Resize(ref dataFiles, temp.Length);
+            temp.CopyTo(dataFiles, 0);
             dataFiles = temp;
             return newFile;
         }
@@ -119,14 +119,14 @@ namespace HW3
         //    return file;
         //}
 
-        public DataFile Peek()
-        {
-            DataFile topFile = null;
-            if (freeIndex == -1 || freeIndex == 0 || dataFiles.Length == 0) return null;
-            //topFile = dataFiles[0];
-            topFile = dataFiles[freeIndex-1];
-            return topFile;
-        }
+        //public DataFile Peek()
+        //{
+        //    DataFile topFile = null;
+        //    if (freeIndex == -1 || freeIndex == 0 || dataFiles.Length == 0) return null;
+        //    //topFile = dataFiles[0];
+        //    topFile = dataFiles[freeIndex-1];
+        //    return topFile;
+        //}
 
         public DataFile BigFile()
         {
@@ -158,6 +158,7 @@ namespace HW3
                     }
                 }
             }
+            freeIndex = counter;
             Array.Resize(ref dataFiles, tempFiles.Length);
             tempFiles.CopyTo(dataFiles,0); 
             return max;
@@ -165,7 +166,18 @@ namespace HW3
 
         public void PrintQueue()
         {
-            
+            int count=freeIndex;
+            DataFile current;
+            DataFile[] tempFiles = new DataFile[dataFiles.Length];
+            dataFiles.CopyTo(tempFiles, 0);
+            for (int i = 0; i < tempFiles.Length; i++)
+            {
+                current = Dequeue();
+                current.Dir();
+            }
+            freeIndex=count;
+            Array.Resize(ref dataFiles, tempFiles.Length);
+            tempFiles.CopyTo(dataFiles, 0);
         }
 
         //public DataFile BigFile(QueueFiles temp) // keeping for reference
