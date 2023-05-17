@@ -92,6 +92,16 @@ namespace HW3
             return size;
         }
 
+        public FileTypeExtension GetType()
+        {
+            return type;
+        }
+
+        public void SetType(FileTypeExtension extension)
+        {
+            type = extension;
+        }
+
         public void Dir()
         {
             Console.WriteLine($"{LastUpdateTime} {GetSize()}KB {FileName}.{type}");
